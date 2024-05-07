@@ -1,16 +1,28 @@
 ﻿@page "/First"
 
+
 <PageTitle>First Page</PageTitle>
 
 <h3>FirstComponent</h3>
+<h4>One Way Binding Source (C#) DEsi. (HTML)</h4>
 <h3>@Msg</h3>
-<input type="button" value="Click Me" @onclick="ChangeMsg"/>
+<input type="text" class="form form-control" value="@Msg" />
+<input type="button" value="Click Me" @onclick="ChangeMsg" class="btn btn-success"/>
+<hr />
+<h4>Two Way Binding C# : Html</h4>
+<input type="text" class="form form-control" @bind-value="Msg"/>
+
+<hr />
+<h4>Two Way Binding With Update</h4>
+<input type="text" class="form form-control" 
+      @bind-value="Msg"  @bind-value:event="oninput"/>
 
 @code {
     public string Msg { get; set; } = "Hello";
 
     private void ChangeMsg()
     {
+        Msg = "New Message";
         Console.WriteLine("Button Click");
     }
 }

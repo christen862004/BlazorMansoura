@@ -1,0 +1,52 @@
+﻿@page "/Emps"
+<PageTitle>Employee List</PageTitle>
+<h3>AllEmpComponent</h3>
+
+<select class="form form-control" @bind="EmpID">
+    @foreach (var item in EmpList)
+    {
+        <option value="@item.Id">@item.Name</option>
+    }
+</select>
+<h1>@EmpID</h1>
+<input type="button" value="Show Employee Data" class="btn btn-primary" @onclick="GetEmp"/>
+<hr />
+@if (EmpObj != null)
+{
+    <div style="border:3px solid red">
+        @EmpObj.Name
+        <img src="/Images/@EmpObj.ImagURl" style="width:150px" />
+    </div>
+}
+else
+{
+    <h1>Wait....</h1>
+}
+@* 
+<input type="button" @onclick="()=>MEthod1(1)" />
+<input type="button" @onclick="()=>MEthod1(2)" /> *@
+
+@code {
+    public int EmpID { get; set; }
+    public List<Employee> EmpList { get; set; }
+    public Employee EmpObj { get; set; }
+
+    public AllEmpComponent()
+    {
+        EmpList = new List<Employee>();
+        EmpList.Add(new Employee() { Id = 1, Name = "Ahmed", Salary = 19000, ImagURl = "Man.png" });
+        EmpList.Add(new Employee() { Id = 2, Name = "Sara", Salary = 19000, ImagURl = "Woman.png" });
+        EmpList.Add(new Employee() { Id = 3, Name = "Mohamed", Salary = 19000, ImagURl = "Man.png" });
+        EmpList.Add(new Employee() { Id = 4, Name = "Omar", Salary = 19000, ImagURl = "Man.png" });
+        EmpList.Add(new Employee() { Id = 5, Name = "Basma", Salary = 19000, ImagURl = "Woman.png" });
+    }
+    private void GetEmp()
+    {
+        EmpObj=  EmpList.FirstOrDefault(e => e.Id == EmpID);
+    }
+    private void MEthod1(int id)
+    {
+        Console.WriteLine(id);
+
+    }
+}

@@ -1,0 +1,8 @@
+﻿@page "/Emp"
+
+<PageTitle>Employee Details</PageTitle>
+<h3>EmployeeComponent</h3>
+<h2>@EmpObj.Name</h2>
+<img src="/Images/@EmpObj.ImagURl" style="width:100px"/>
+
+<input @bind-value="EmpObj.Name" class="form form-control "/>
