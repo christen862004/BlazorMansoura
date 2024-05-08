@@ -14,6 +14,10 @@ namespace BlazorMansoura
             //Change title
             builder.RootComponents.Add<HeadOutlet>("head::after");
             //inject Day3
+            builder.Services.AddScoped<IService<Department>, DepartmentService>();
+
+            builder.Services.AddScoped<IService<Employee>, EmployeeService>();
+
             builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
 
             await builder.Build().RunAsync();

@@ -1,0 +1,29 @@
+﻿@page "/Employee/{id:int}"
+<h3>EmployeeDEtailsComponent</h3>
+
+@if (EmpObj != null)
+{
+    <h2>@EmpObj.Name</h2>
+    <h3>@EmpObj.Salary</h3>
+    <h3>@EmpObj.Dept_Id</h3>
+}
+else
+{
+    <h1>Wait ... or Id Invalid</h1>
+}
+<a href="/Employees">Back To List</a>
+@code {
+    [Parameter]
+    public int id { get; set; }
+
+    public Employee EmpObj { get; set; }
+
+    [Inject]//ask
+    public IService<Employee> EmpService { get; set; }//service provider
+
+    protected override void OnInitialized()
+    {
+        EmpObj = EmpService.GetById(id);
+        base.OnInitialized();
+    }
+}

@@ -1,0 +1,29 @@
+﻿@page "/Employees"
+
+<h3>DisplayAllEmployeeComponent</h3>
+<table class="table table-bordered table-hover">
+    @foreach (var item in EmpList)
+    {
+        <tr>
+            <td>@item.Id</td>
+            <td>@item.Name</td>
+            <td><a href="/Employee/@item.Id">DEtails</a></td>
+            <td><a href="/Employee/Edit/@item.Id">Edit</a></td>
+
+        </tr>
+    }
+
+</table>
+
+@code {
+    public List<Employee> EmpList { get; set; }
+    
+    [Inject]
+    public IService<Employee> EmpService { get; set; }
+            //DI dont create but ask ==>IOC Container "Service Provider" Register
+    protected override void OnInitialized()
+    {
+        EmpList = EmpService.GetAll();
+        base.OnInitialized();
+    }
+}

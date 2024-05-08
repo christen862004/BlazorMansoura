@@ -1,0 +1,40 @@
+﻿@page "/Employee/Edit/{id:int}"
+@inject IService<Employee> EmpService
+
+<h3>EditEmployeeComponent</h3>
+@if (EmpObj != null)
+{
+    <!--Model Edit input-->
+    <EditForm Model="EmpObj" OnSubmit="SaveData">
+        <div>
+            <label>Name</label>
+            <InputText class="form form-control" @bind-Value="EmpObj.Name"></InputText>
+        </div>
+        <div>
+            <label>Salary</label>
+            <InputNumber class="form form-control" @bind-Value="EmpObj.Salary"></InputNumber>
+        </div>
+        <div>
+            <label>Image</label>
+            <InputText class="form form-control" @bind-Value="EmpObj.ImagURl"></InputText>
+        </div>
+        <div>
+            <label>Department</label>
+            <InputSelect class="form form-control" @bind-Value="EmpObj.Dept_Id">
+                @foreach (var deptItem in DeptList)
+                {   
+                    <option value="@deptItem.Id">@deptItem.Name</option>
+                }
+
+            </InputSelect>
+        </div>
+        <input type="submit" class="btn btn-success" value="Save" />
+    </EditForm>
+    <h3>@EmpObj.Name - @EmpObj.Salary - @EmpObj.Dept_Id</h3>
+}
+else
+{
+    <h1>Wait .. or Invalid Id</h1>
+}
+<a href="/Employees">Back To List</a>
+
