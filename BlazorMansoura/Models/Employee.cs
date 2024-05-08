@@ -6,6 +6,8 @@
         public string Name { get; set; }
         public int Salary { get; set; }
         public string ImagURl { get; set; }
+        public int Dept_Id { get; set; }
+
 
     }
 }

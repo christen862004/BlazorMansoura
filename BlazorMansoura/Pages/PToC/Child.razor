@@ -1,0 +1,15 @@
+﻿<div style="border:3px solid blue;margin:10px;padding:10px">
+    <h3>Child</h3>
+    <h4>@Message</h4>
+</div>
+
+@code {
+    [Parameter]
+    public string Message { get; set; } = "Hello";
+    //value search 1)route 2)Parent tage
+    // protected override void OnParametersSet()
+    // {
+    //     Console.WriteLine($"OnParametersSet {Message}");
+    //     base.OnParametersSet();
+    // }
+}

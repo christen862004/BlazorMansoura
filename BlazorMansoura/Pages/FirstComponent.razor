@@ -16,7 +16,6 @@
 <h4>Two Way Binding With Update</h4>
 <input type="text" class="form form-control" 
       @bind-value="Msg"  @bind-value:event="oninput"/>
-
 @code {
     public string Msg { get; set; } = "Hello";
 

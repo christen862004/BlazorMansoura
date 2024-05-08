@@ -1,0 +1,34 @@
+﻿@page "/Emps/{id:int}"
+
+<h3>TestRouteComponent</h3>
+<h1>id = @id</h1>
+
+@code {
+    [Parameter]
+    public int id { get; set; }//value ==>1)source Route segmate
+
+    public TestRouteComponent()
+    {
+        Console.WriteLine($"Constructor id={id}");
+    }
+
+    public override Task SetParametersAsync(ParameterView parameters)
+    {
+        Console.WriteLine($"SetParametersAsync id={id}");
+        return base.SetParametersAsync(parameters);
+    }
+
+    protected override void OnInitialized()
+    {
+        Console.WriteLine($"OnInitialized id={id}");
+
+        base.OnInitialized();
+    }
+
+    protected override void OnParametersSet()
+    {
+        Console.WriteLine($"OnParametersSet id={id}");
+      //  id = 0;
+        base.OnParametersSet();
+    }
+}

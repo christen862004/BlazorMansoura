@@ -6,6 +6,7 @@
 
         public EmployeeComponent()
         {
+            
             EmpObj = new Employee()
             {
                 Id = 1,

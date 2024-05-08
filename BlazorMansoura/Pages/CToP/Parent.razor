@@ -1,0 +1,14 @@
+﻿@page "/Parent3"
+<h3>Parent</h3>
+<Child CounterChangeEvent="GetCounterHandeller"> </Child>
+
+<h1 style="background-color:antiquewhite">@LocalCounter</h1>
+@code {
+    public int LocalCounter { get; set; }
+
+    private void GetCounterHandeller(int c)
+    {
+        LocalCounter = c;
+    }
+  
+}
