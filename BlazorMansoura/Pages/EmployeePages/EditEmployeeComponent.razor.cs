@@ -13,7 +13,7 @@ namespace BlazorMansoura.Pages.EmployeePages
 
         [Inject]
         public IService<Department> DeptService { get; set; }
-
+        public bool ISvalid { get; set; } = true;
         // [Inject]
         // public IService<Employee> EmpService { get; set; }
 
@@ -30,6 +30,11 @@ namespace BlazorMansoura.Pages.EmployeePages
         {
             Console.WriteLine("Data Saved");
             NavManager.NavigateTo("/Employees");
+        }
+        private void InvalidMethod()
+        {
+            ISvalid = false;
+            Console.WriteLine("Invalid Employee Data");
         }
     }
 }

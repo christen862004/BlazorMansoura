@@ -4,19 +4,29 @@
 <h3>EditEmployeeComponent</h3>
 @if (EmpObj != null)
 {
+    if (ISvalid == false)
+    {
+        <div>Invalid Employee</div>
+    }
     <!--Model Edit input-->
-    <EditForm Model="EmpObj" OnSubmit="SaveData">
+    <EditForm Model="EmpObj" OnValidSubmit="SaveData" OnInvalidSubmit="InvalidMethod">
+        <!--Support Validation-->
+        <DataAnnotationsValidator></DataAnnotationsValidator>
+        <ValidationSummary></ValidationSummary>
         <div>
             <label>Name</label>
             <InputText class="form form-control" @bind-Value="EmpObj.Name"></InputText>
+            <ValidationMessage For="()=>EmpObj.Name"></ValidationMessage>
         </div>
         <div>
             <label>Salary</label>
             <InputNumber class="form form-control" @bind-Value="EmpObj.Salary"></InputNumber>
+            <ValidationMessage For="()=>EmpObj.Salary"></ValidationMessage>
         </div>
         <div>
             <label>Image</label>
             <InputText class="form form-control" @bind-Value="EmpObj.ImagURl"></InputText>
+            <ValidationMessage For="()=>EmpObj.ImagURl"></ValidationMessage>
         </div>
         <div>
             <label>Department</label>
@@ -27,6 +37,7 @@
                 }
 
             </InputSelect>
+            <ValidationMessage For="()=>EmpObj.Dept_Id"></ValidationMessage>
         </div>
         <input type="submit" class="btn btn-success" value="Save" />
     </EditForm>
